@@ -2,7 +2,7 @@
 
 namespace funcional_health.Migrations
 {
-    public partial class Seed : Migration
+    public partial class seed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

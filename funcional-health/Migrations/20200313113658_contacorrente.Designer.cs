@@ -9,8 +9,8 @@ using funcional_health.Persistance;
 namespace funcional_health.Migrations
 {
     [DbContext(typeof(FuncionalHealthDbContext))]
-    [Migration("20200311143135_Seed")]
-    partial class Seed
+    [Migration("20200313113658_contacorrente")]
+    partial class contacorrente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

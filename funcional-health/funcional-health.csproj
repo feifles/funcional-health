@@ -8,9 +8,15 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200311141844_ContaCorrente.cs" />
     <Compile Remove="Migrations\20200311141844_ContaCorrente.Designer.cs" />
+    <Compile Remove="Migrations\20200311142920_contacorrente.cs" />
+    <Compile Remove="Migrations\20200311142920_contacorrente.Designer.cs" />
+    <Compile Remove="Migrations\20200311143135_Seed.cs" />
+    <Compile Remove="Migrations\20200311143135_Seed.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>

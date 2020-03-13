@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using funcional_health.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,12 @@ namespace funcional_health
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IContaCorrenteRepository, ContaCorrenteRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //Adding AutoMapper
+            services.AddAutoMapper(typeof(Startup));
+            //Adding DbContext
             services.AddDbContext<FuncionalHealthDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddControllers();
         }
