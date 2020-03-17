@@ -12,9 +12,9 @@ Contém testes unitários feitos com XUnit.
 
 
 ## Valores inseridos no banco através do method Seed
-INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('123456', 1000)
-INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('654321', 100)
-INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('567890', 320)
+1. INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('123456', 1000)
+2. INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('654321', 100)
+3. INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('567890', 320)
 
 
 # Como rodar?
