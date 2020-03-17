@@ -86,35 +86,17 @@ namespace funcional_health.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            //Negative value cannot be withdrawn
-            if (operacaoResource.Valor <= 0)
-            {
-                ModelState.AddModelError("Erro", "Valor não pode ser menor ou igual 0.");
-                return BadRequest(ModelState);
-            }
-
             //Try to get the account
             var ccs = await repository.Get(operacaoResource.Cc);
 
-            //Found the account
-            if (ccs != null)
+            if(ccs != null)
             {
-                //User doesn't have enough funds
-                if(operacaoResource.Valor > ccs.Balance)
-                {
-                    ModelState.AddModelError("erro", "Saldo insuficiente.");
-                    return Ok(ModelState);
-                }
-                else
-                {
-                    ccs.Balance -= operacaoResource.Valor;
-                    await unitOfWork.CompleteAsync();
-                }
+                var result = ccs.Withdrawn(operacaoResource.Valor);
+
+                return await ProcessResult(ccs, result);
             }
 
-            ccs = await repository.Get(operacaoResource.Cc);
-
-            return Ok(mapper.Map<ContaCorrente, ContaCorrenteResource>(ccs));
+            return NotFound("Conta " + operacaoResource.Cc + " não encontrada.");
         }
 
         /*
@@ -133,26 +115,32 @@ namespace funcional_health.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            //Negative value cannot be withdrawn
-            if (operacaoResource.Valor <= 0)
-            {
-                ModelState.AddModelError("Erro", "Valor não pode ser menor ou igual 0.");
-                return BadRequest(ModelState);
-            }
-
             //Try to get the account
             var ccs = await repository.Get(operacaoResource.Cc);
 
-            //Found the account
             if (ccs != null)
             {
-                ccs.Balance += operacaoResource.Valor;
-                await unitOfWork.CompleteAsync();
+                var result = ccs.Deposit(operacaoResource.Valor);
+
+                return await ProcessResult(ccs, result);
             }
 
-            ccs = await repository.Get(operacaoResource.Cc);
+            return NotFound("Conta " + operacaoResource.Cc + " não encontrada.");
+        }
 
-            return Ok(mapper.Map<ContaCorrente, ContaCorrenteResource>(ccs));
+        private async Task<IActionResult> ProcessResult(ContaCorrente ccs, OperationResult result)
+        {
+            if ((!result.IsError) && (result.Message == OpMgs.SUCCESSFUL_OPERATION))
+            {
+                await unitOfWork.CompleteAsync();
+
+                return Ok(mapper.Map<ContaCorrente, ContaCorrenteResource>(ccs));
+            }
+            else
+            {
+                ModelState.AddModelError("ERRO", result.Message);
+                return BadRequest(ModelState);
+            }
         }
     }
 }
