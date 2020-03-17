@@ -11,14 +11,25 @@ Aplicação RESTful com mapeamento de objetos e implementando padrão de reposit
 Contém testes unitários feitos com XUnit.
 
 
-Como rodar?
+## Valores inseridos no banco através do method Seed
+INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('123456', 1000)
+INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('654321', 100)
+INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('567890', 320)
+
+
+# Como rodar?
 
 1 - Altere o connection string em appsettings.json.
-Exemplo: "Default": "Data Source=MYMACHINE; database=MYDATABASE; User ID=USER;Password=PASSWORD;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+Exemplo: 
+
+```"Default": "Data Source=MYMACHINE; database=MYDATABASE; User ID=USER;Password=PASSWORD;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" ```
 
 2 - Execute as migrações:
-    Visual Studio: update-database
+    Visual Studio:
+    ``` update-database ```
+    CLI .NET Core: 
+    ``` dotnet ef database update ```
     
-    CLI .NET Core: dotnet ef database update
-    
+
+     
 Só isso! Aproveite =D
