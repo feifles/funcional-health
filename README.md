@@ -9,3 +9,16 @@ Projeto simulando um caixa eletrônico com operações de depositar, sacar e ver
 Aplicação RESTful com mapeamento de objetos e implementando padrão de repositório.
 
 Contém testes unitários feitos com XUnit.
+
+
+Como rodar?
+
+1 - Altere o connection string em appsettings.json.
+Exemplo: "Default": "Data Source=MYMACHINE; database=MYDATABASE; User ID=USER;Password=PASSWORD;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+
+2 - Execute as migrações:
+    Visual Studio: update-database
+    
+    CLI .NET Core: dotnet ef database update
+    
+Só isso! Aproveite =D
