@@ -26,10 +26,5 @@ namespace funcional_health.Persistance
                 .Where(x => x.AccountNumber.Equals(cc))
                 .FirstOrDefaultAsync();
         }
-
-        //public async Task<ContaCorrente> Withdraw (OperacaoResource operacao)
-        //{
-
-        //}
     }
 }
