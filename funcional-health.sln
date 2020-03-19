@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "funcional-health", "funcional-health\funcional-health.csproj", "{B57CF188-7098-4FAE-A289-1FE7EF6A15EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "funcional-health.UnitTests", "funcional-health.UnitTests\funcional-health.UnitTests.csproj", "{8779C9BB-3924-47B5-B3AB-0FFE2B12C57F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "funcional-health.UnitTests", "funcional-health.UnitTests\funcional-health.UnitTests.csproj", "{8779C9BB-3924-47B5-B3AB-0FFE2B12C57F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

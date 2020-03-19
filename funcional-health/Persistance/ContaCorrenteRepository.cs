@@ -19,6 +19,11 @@ namespace funcional_health.Persistance
             this.unitOfWork = unitOfWork;
         }
 
+        public async Task<List<ContaCorrente>> GetAll()
+        {
+            return await context.ContasCorrentes.ToListAsync();
+        }
+
         public async Task<ContaCorrente> Get(string cc)
         {
             return await context

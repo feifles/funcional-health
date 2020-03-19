@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using funcional_health.GQL.Queries;
+using funcional_health.GQL.Schema;
+using funcional_health.GQL.Types;
 using funcional_health.Persistance;
+using GraphQL;
+using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,13 +33,29 @@ namespace funcional_health
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Repositories
+            services.AddTransient<IContaCorrenteRepository, ContaCorrenteRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-            services.AddScoped<IContaCorrenteRepository, ContaCorrenteRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             //Adding AutoMapper
             services.AddAutoMapper(typeof(Startup));
+
             //Adding DbContext
             services.AddDbContext<FuncionalHealthDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+
+            services.AddTransient<ContaCorrenteQuery>();
+
+            services.AddSingleton<ContaCorrenteType>();
+
+            var sp = services.BuildServiceProvider();
+
+            services.AddSingleton<ISchema>(new FuncionalHealthSchema(new FuncDependencyResolver(type => sp.GetService(type))));
+
+            //services.AddScoped<ISchema, FuncionalHealthSchema>();
+
             services.AddControllers();
         }
 
@@ -56,6 +77,7 @@ namespace funcional_health
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
