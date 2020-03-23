@@ -19,17 +19,19 @@ namespace funcional_health.Persistance
             this.unitOfWork = unitOfWork;
         }
 
-        public async Task<List<ContaCorrente>> GetAll()
+        public async Task<IEnumerable<ContaCorrente>> GetAll()
         {
             return await context.ContasCorrentes.ToListAsync();
         }
 
         public async Task<ContaCorrente> Get(string cc)
         {
-            return await context
+            var res = await context
                 .ContasCorrentes
                 .Where(x => x.AccountNumber.Equals(cc))
                 .FirstOrDefaultAsync();
+
+            return res;
         }
     }
 }

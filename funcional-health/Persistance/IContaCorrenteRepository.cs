@@ -6,7 +6,7 @@ namespace funcional_health.Persistance
 {
     public interface IContaCorrenteRepository
     {
-        Task<List<ContaCorrente>> GetAll();
+        Task<IEnumerable<ContaCorrente>> GetAll();
         Task<ContaCorrente> Get(string cc);
     }
 }

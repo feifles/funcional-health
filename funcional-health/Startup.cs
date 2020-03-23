@@ -18,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using GraphiQl;
 
 namespace funcional_health
 {
@@ -73,10 +74,13 @@ namespace funcional_health
 
             app.UseAuthorization();
 
+            app.UseGraphiQl();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
 
         }
     }

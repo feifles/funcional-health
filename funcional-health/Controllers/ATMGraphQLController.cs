@@ -40,7 +40,7 @@ namespace funcional_health.Controllers
 
             var result = await _documentExecuter.ExecuteAsync(executionOptions);
 
-            if (result.Errors.Any())
+            if (result.Errors?.Count > 0)
             {
                 return BadRequest(result);
             }
