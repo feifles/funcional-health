@@ -77,7 +77,7 @@ namespace funcional_health
 
             app.UseAuthorization();
 
-            app.UseGraphiQl();
+            app.UseGraphiQl("/GraphQL", "/api/ATMGraphQL/");
 
             app.UseEndpoints(endpoints =>
             {
