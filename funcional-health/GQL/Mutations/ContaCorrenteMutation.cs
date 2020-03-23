@@ -55,6 +55,41 @@ namespace funcional_health.GQL.Mutations
                     return cc;
 
                 });
+            Field<ContaCorrenteType>(
+               "depositar",
+               arguments: new QueryArguments(
+                   new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "conta" },
+                   new QueryArgument<NonNullGraphType<FloatGraphType>> { Name = "valor" }
+                   ),
+               resolve: context =>
+               {
+                   var conta = context.GetArgument<int?>("conta").ToString();
+                   var valor = context.GetArgument<double>("valor");
+
+                   var cc = repository.Get(conta).Result;
+
+                   if (cc == null)
+                   {
+                       context.Errors.Add(new ExecutionError(OpMgs.ACCOUNT_NOT_FOUND));
+                       return new ContaCorrente()
+                       {
+                           AccountNumber = conta
+                       };
+                   }
+
+                   var result = cc.Deposit(valor);
+
+                   if (result.IsError)
+                   {
+                       context.Errors.Add(new ExecutionError(result.Message));
+                       return cc;
+                   }
+
+                   unitOfWork.CompleteAsync();
+
+                   return cc;
+
+               });
         }
     }
 }
