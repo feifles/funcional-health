@@ -19,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using GraphiQl;
+using funcional_health.GQL.Mutations;
 
 namespace funcional_health
 {
@@ -48,8 +49,10 @@ namespace funcional_health
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
 
             services.AddTransient<ContaCorrenteQuery>();
+            services.AddTransient<ContaCorrenteMutation>();
 
             services.AddSingleton<ContaCorrenteType>();
+            services.AddSingleton<ContaCorrenteInputType>();
 
             var sp = services.BuildServiceProvider();
 

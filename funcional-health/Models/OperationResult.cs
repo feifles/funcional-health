@@ -22,6 +22,7 @@ namespace funcional_health.Models
     public static class OpMgs {
         public const string SUCCESSFUL_OPERATION = "Operação realizada com sucesso.";
         public const string INSUFFICIENT_FUNDS = "Saldo Insuficiente.";
+        public const string ACCOUNT_NOT_FOUND = "Conta Corrente não encontrada.";
 
         public const string INVALID_INPUT = "Input inválido";
 

@@ -1,4 +1,5 @@
-﻿using funcional_health.GQL.Queries;
+﻿using funcional_health.GQL.Mutations;
+using funcional_health.GQL.Queries;
 using GraphQL;
 
 namespace funcional_health.GQL.Schema
@@ -9,6 +10,7 @@ namespace funcional_health.GQL.Schema
             : base(resolver)
         {
             Query = resolver.Resolve<ContaCorrenteQuery>();
+            Mutation = resolver.Resolve<ContaCorrenteMutation>();
         }
     }
 }
