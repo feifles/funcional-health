@@ -8,6 +8,8 @@ Projeto simulando um caixa eletrônico com operações de depositar, sacar e ver
 
 Aplicação RESTful com mapeamento de objetos e implementando padrão de repositório.
 
+Também existe um endpoint para queries GraphQL (Detalhes descritos abaixo)
+
 Contém testes unitários feitos com XUnit.
 
 
