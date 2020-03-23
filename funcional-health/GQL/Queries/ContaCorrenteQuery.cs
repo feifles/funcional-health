@@ -11,7 +11,7 @@ namespace funcional_health.GQL.Queries
 {
     public class ContaCorrenteQuery : ObjectGraphType
     {
-        public ContaCorrenteQuery(IContaCorrenteRepository repository)
+        public ContaCorrenteQuery(IContaCorrenteRepository repository, IUnitOfWork unitOfWork)
         {
             Field<ListGraphType<ContaCorrenteType>>(
                 "contas",

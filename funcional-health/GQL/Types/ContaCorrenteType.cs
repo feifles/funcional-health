@@ -12,8 +12,8 @@ namespace funcional_health.GQL.Types
         public ContaCorrenteType()
         {
             Field(x => x.Id);
-            Field(x => x.AccountNumber);
-            Field(x => x.Balance);
+            Field("conta", x => x.AccountNumber);
+            Field("saldo", x => x.Balance);
         }
     }
 }
