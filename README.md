@@ -37,7 +37,8 @@ Também é possível utilizar a API REST na url /api/atm/.
 ##Operações:
 
 Sacar
-```mutation {
+```
+mutation {
   sacar(conta: 123456, valor: 140) {
     conta
     saldo
@@ -46,7 +47,8 @@ Sacar
 ```
 
 Depositar
-```mutation {
+```
+mutation {
   depositar(conta: 123456, valor: 200) {
     conta
     saldo
@@ -55,7 +57,8 @@ Depositar
 ```
 
 Saldo
-```query {
+```
+query {
   saldo(conta: 123456)
 }
 ```
