@@ -17,7 +17,7 @@ Contém testes unitários feitos com XUnit.
 3. INSERT INTO ContasCorrentes (AccountNumber, Balance) VALUES ('567890', 320)
 
 
-# Como rodar?
+# Como configurar o projeto?
 
 1 - Altere o connection string em appsettings.json.
 Exemplo: 
@@ -30,6 +30,36 @@ Exemplo:
     CLI .NET Core: 
     ``` dotnet ef database update ```
     
+# Como testar?
+Ao executar a aplicação a url padrão é a /api/graphql que é uma interface para testes da API do graphql.
+Também é possível utilizar a API REST na url /api/atm/saldo.
 
-     
+##Operações:
+
+Sacar
+```mutation {
+  sacar(conta: 123456, valor: 140) {
+    conta
+    saldo
+  }
+}
+```
+
+Depositar
+```mutation {
+  depositar(conta: 123456, valor: 200) {
+    conta
+    saldo
+  }
+}
+```
+
+Saldo
+```query {
+  saldo(conta: 123456)
+}
+```
+
+
+
 Só isso! Aproveite =D
