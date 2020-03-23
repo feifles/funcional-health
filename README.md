@@ -32,7 +32,7 @@ Exemplo:
     
 # Como testar?
 Ao executar a aplicação a url padrão é a /api/graphql que é uma interface para testes da API do graphql.
-Também é possível utilizar a API REST na url /api/atm/.
+Também é possível utilizar a API REST na url /api/atm/ ou a GraphQL /api/ATMGraphQL/
 
 ##Operações:
 
