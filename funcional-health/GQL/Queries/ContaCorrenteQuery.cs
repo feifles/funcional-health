@@ -17,15 +17,14 @@ namespace funcional_health.GQL.Queries
                 "contas",
                 resolve: context => repository.GetAll());
 
-            Field<ContaCorrenteType>(
+            Field<FloatGraphType>(
                 "saldo",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "conta" }),
                 resolve: context => {
 
                     var cc = context.GetArgument<int?>("conta").ToString();
 
-                    //return repository.Get(cc);
-                    return new ContaCorrente { AccountNumber = "123456", Balance = 32, Id = 3 };
+                    return repository.GetGQL(cc);
                 });
         }
     }

@@ -8,5 +8,6 @@ namespace funcional_health.Persistance
     {
         Task<IEnumerable<ContaCorrente>> GetAll();
         Task<ContaCorrente> Get(string cc);
+        Task<double> GetGQL(string cc);
     }
 }

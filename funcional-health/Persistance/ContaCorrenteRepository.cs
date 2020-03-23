@@ -26,12 +26,20 @@ namespace funcional_health.Persistance
 
         public async Task<ContaCorrente> Get(string cc)
         {
-            var res = await context
+            return await context
                 .ContasCorrentes
                 .Where(x => x.AccountNumber.Equals(cc))
                 .FirstOrDefaultAsync();
+        }
 
-            return res;
+        public async Task<double> GetGQL(string cc)
+        {
+            var res = await context
+                    .ContasCorrentes
+                    .Where(x => x.AccountNumber.Equals(cc))
+                    .FirstOrDefaultAsync();
+
+            return res.Balance;
         }
     }
 }
