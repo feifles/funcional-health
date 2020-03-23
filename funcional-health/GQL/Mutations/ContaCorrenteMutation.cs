@@ -38,19 +38,13 @@ namespace funcional_health.GQL.Mutations
 
                     var result = cc.Withdrawn(valor);
 
-                    if (result.IsError)
-                    { 
-                        context.Errors.Add(new ExecutionError(result.Message));
-                        return cc;
-                    }
-
-                    if (result.Message.Equals(OpMgs.INSUFFICIENT_FUNDS))
+                    if (!result.Message.Equals(OpMgs.SUCCESSFUL_OPERATION))
                     {
                         context.Errors.Add(new ExecutionError(result.Message));
                         return cc;
                     }
-
-                    unitOfWork.CompleteAsync();
+                    else
+                        unitOfWork.CompleteAsync();
 
                     return cc;
 
@@ -79,13 +73,12 @@ namespace funcional_health.GQL.Mutations
 
                    var result = cc.Deposit(valor);
 
-                   if (result.IsError)
+                   if (!result.Message.Equals(OpMgs.SUCCESSFUL_OPERATION))
                    {
                        context.Errors.Add(new ExecutionError(result.Message));
                        return cc;
-                   }
-
-                   unitOfWork.CompleteAsync();
+                   }else
+                        unitOfWork.CompleteAsync();
 
                    return cc;
 
